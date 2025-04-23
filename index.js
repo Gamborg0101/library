@@ -21,6 +21,8 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(newBook);
 }
 
+/*Section for test start */
+
 let book1 = new Book("Lord of the Rings", "JJR", 225, true);
 let book2 = new Book(
   "The Girl With the Dragon Tattoo",
@@ -35,14 +37,21 @@ let book3 = new Book(
   false
 );
 
-/* Adding to page */
+createNewBook(book1);
+createNewBook(book2);
+createNewBook(book3);
 
-const bookContainer = document.getElementById("book-container");
+/*Section for test end */
 
-for (let element of myLibrary) {
+/* Create new entry in HTML */
+
+function createNewBook(book) {
+  const bookContainer = document.getElementById("book-container");
+
   let addNewBook = document.createElement("div");
-  addNewBook.innerText = element.title;
-  addNewBook.id = element.id;
+  addNewBook.textContent = book.title;
+
+  addNewBook.id = book.id;
   bookContainer.appendChild(addNewBook);
 }
 
@@ -50,20 +59,22 @@ for (let element of myLibrary) {
 
 const form = document.getElementById("my-form");
 const formSubmit = document.getElementById("my-form-submit");
-const formData = new FormData(form, formSubmit);
 
 formSubmit.addEventListener("click", (e) => {
   e.preventDefault();
 
-  const formData = new FormData(form);
+  let author = document.getElementById("author");
+  let bookTitle = document.getElementById("book-title");
+  let numberOfPages = document.getElementById("number-of-pages");
+  let read = document.getElementById("read");
 
-  for (const p of formData) {
-    var name = p[0];
-    var value = p[1];
+  let newBook = new Book(
+    bookTitle.value,
+    author.value,
+    numberOfPages.value,
+    read.value
+  );
 
-    console.log(name, value);
-
-    /* I need to take the values, save them in an object, and then store them in the array. 
-    Then there would hopefully be no need to manipulate the HTML anymore. */
-  }
+  createNewBook(newBook);
+  console.log(newBook);
 });
