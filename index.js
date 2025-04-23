@@ -57,11 +57,13 @@ formSubmit.addEventListener("click", (e) => {
 
   const formData = new FormData(form);
 
-  for (const [key, value] of formData.entries()) {
-    console.log(key, value);
-    
+  for (const p of formData) {
+    var name = p[0];
+    var value = p[1];
+
+    console.log(name, value);
+
     /* I need to take the values, save them in an object, and then store them in the array. 
     Then there would hopefully be no need to manipulate the HTML anymore. */
-
   }
 });
