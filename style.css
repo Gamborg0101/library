@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Times New Roman", Times, serif;
+}
+
+#book-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#book-container > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid black;
+  width: 100%;
+}
