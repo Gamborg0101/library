@@ -45,3 +45,23 @@ for (let element of myLibrary) {
   addNewBook.id = element.id;
   bookContainer.appendChild(addNewBook);
 }
+
+/* Storing information from form */
+
+const form = document.getElementById("my-form");
+const formSubmit = document.getElementById("my-form-submit");
+const formData = new FormData(form, formSubmit);
+
+formSubmit.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(form);
+
+  for (const [key, value] of formData.entries()) {
+    console.log(key, value);
+    
+    /* I need to take the values, save them in an object, and then store them in the array. 
+    Then there would hopefully be no need to manipulate the HTML anymore. */
+
+  }
+});
