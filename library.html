@@ -16,27 +16,36 @@
       <div id="form-container">
         <form id="my-form" method="post">
           <label for="">Author</label>
-          <input type="text" id="author" name="author" />
+          <input
+            type="text"
+            id="author"
+            name="author"
+            required
+            minlength="5"
+            maxlength="80"
+          />
 
           <label for="">Book title</label>
-          <input type="text" id="book-title" name="book-title" />
-
-<<<<<<< HEAD
-        <label for="">Number of pages</label>
-        <input type="text" id="number-of-pages" name="number-of-pages" />
-
-        <label for="">Read</label>
-        <input type="checkbox" id="read" name="read" />
-=======
-          <label for="">Release year</label>
-          <input type="text" id="release-year" name="release-year" />
->>>>>>> 3f8b5d7 (Book addition and deletion now works)
+          <input
+            type="text"
+            id="book-title"
+            name="book-title"
+            required
+            minlength="5"
+            maxlength="80"
+          />
 
           <label for="">Number of pages</label>
-          <input type="text" id="number-of-pages" name="number-of-pages" />
-
+          <input
+            id="number-of-pages"
+            name="number-of-pages"
+            type="number"
+            min="10"
+            max="1500"
+            required
+          />
           <label for="">Read</label>
-          <input type="checkbox" id="read" name="read" />
+          <input type="checkbox" id="read" name="read" required />
 
           <button id="close-button" type="button">Close</button>
           <button id="my-form-submit" type="submit">Submit</button>

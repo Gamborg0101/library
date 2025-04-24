@@ -37,28 +37,61 @@ createNewBook(book3);
 /*Section for test end */
 
 /* Create new entry in HTML */
-
 function createNewBook(book) {
   const bookContainer = document.getElementById("book-container");
-  console.log(book.title);
 
   let addNewBook = document.createElement("div");
   let addDeleteButton = document.createElement("button");
-
-  addDeleteButton.textContent = "Delete";
-  addDeleteButton.type = "button";
-  addDeleteButton.id = book.id;
-
-  addNewBook.textContent = book.title;
   addNewBook.id = book.id;
+
+  let titleElement = document.createElement("p");
+  titleElement.textContent = `Title: ${book.title} `;
+  addNewBook.appendChild(titleElement);
+
+  let authorElement = document.createElement("p");
+  authorElement.textContent = `Author: ${book.author}`;
+  addNewBook.appendChild(authorElement);
+
+  let pagesElement = document.createElement("p");
+  pagesElement.textContent = `Number of pages: ${book.pages} `;
+  addNewBook.appendChild(pagesElement);
+
+  let readStatusElement = document.createElement("p");
+  readStatusElement.textContent = `Have you read it? ${
+    book.read ? "Read" : "Not read"
+  }`;
+  addNewBook.appendChild(readStatusElement);
 
   bookContainer.appendChild(addNewBook);
   addNewBook.appendChild(addDeleteButton);
+
+  /* Delete button */
+  addDeleteButton.textContent = "Delete";
+  addDeleteButton.type = "button";
+  addDeleteButton.id = book.id;
 
   addDeleteButton.addEventListener("click", () => {
     addNewBook.remove();
     myLibrary = myLibrary.filter((bookIterator) => bookIterator.id !== book.id);
   });
+
+  /* Add "read"-button */
+  const readButton = document.createElement("button");
+
+  readButton.textContent = !book.read
+    ? (readButton.textContent = "Read")
+    : (readButton.textContent = "Not read");
+
+  readButton.addEventListener("click", () => {
+    readButton.textContent === "Not read"
+      ? ((readButton.textContent = "Read"),
+        (readStatusElement.textContent = "Read"))
+      : ((readButton.textContent = "Not read"),
+        (readStatusElement.textContent = "Not read"));
+  });
+
+  addNewBook.appendChild(readButton);
+  console.log(readButton);
 }
 
 /* Open modal */
