@@ -57,12 +57,7 @@ function createNewBook(book) {
 
   addDeleteButton.addEventListener("click", () => {
     addNewBook.remove();
-
-    // console.log(book.id);
-    myLibrary.filter((bookIterator) => bookIterator.id !== book.id);
-    console.log(myLibrary);
-
-    /*myLibrary = myLibrary.filter((book) => book.id !== book.id);*/
+    myLibrary = myLibrary.filter((bookIterator) => bookIterator.id !== book.id);
   });
 }
 
