@@ -1,4 +1,3 @@
-/* LOGIC */
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -6,19 +5,13 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
+  this.id = crypto.randomUUID();
 
-  addBookToLibrary(this.title, this.author, this.pages, this.read);
+  addBookToLibrary(this);
 }
 
-function addBookToLibrary(title, author, pages, read) {
-  let newBook = {
-    title: title,
-    author: author,
-    pages: pages,
-    read: read,
-    id: crypto.randomUUID(),
-  };
-  myLibrary.push(newBook);
+function addBookToLibrary(book) {
+  myLibrary.push(book);
 }
 
 /*Section for test start */
@@ -47,16 +40,46 @@ createNewBook(book3);
 
 function createNewBook(book) {
   const bookContainer = document.getElementById("book-container");
+  console.log(book.title);
 
   let addNewBook = document.createElement("div");
-  addNewBook.textContent = book.title;
+  let addDeleteButton = document.createElement("button");
 
+  addDeleteButton.textContent = "Delete";
+  addDeleteButton.type = "button";
+  addDeleteButton.id = book.id;
+
+  addNewBook.textContent = book.title;
   addNewBook.id = book.id;
+
   bookContainer.appendChild(addNewBook);
+  addNewBook.appendChild(addDeleteButton);
+
+  addDeleteButton.addEventListener("click", () => {
+    addNewBook.remove();
+
+    // console.log(book.id);
+    myLibrary.filter((bookIterator) => bookIterator.id !== book.id);
+    console.log(myLibrary);
+
+    /*myLibrary = myLibrary.filter((book) => book.id !== book.id);*/
+  });
 }
 
-/* Storing information from form */
+/* Open modal */
+const modal = document.getElementById("modal");
+const openButton = document.getElementById("add-new-book");
+const closeButton = document.getElementById("close-button");
 
+closeButton.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+openButton.addEventListener("click", () => {
+  modal.style.display = "block";
+});
+
+/* Storing information from form */
 const form = document.getElementById("my-form");
 const formSubmit = document.getElementById("my-form-submit");
 
@@ -76,5 +99,4 @@ formSubmit.addEventListener("click", (e) => {
   );
 
   createNewBook(newBook);
-  console.log(newBook);
 });

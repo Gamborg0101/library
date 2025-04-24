@@ -10,26 +10,41 @@
     <h1>Library</h1>
     <button id="add-new-book">Add new book</button>
     <!-- Should be a pop up -->
-    <div id="form-container">
-      <form id="my-form" method="post">
-        <label for="">Author</label>
-        <input type="text" id="author" name="author" />
 
-        <label for="">Book title</label>
-        <input type="text" id="book-title" name="book-title" />
+    <!-- Modal -->
+    <div id="modal">
+      <div id="form-container">
+        <form id="my-form" method="post">
+          <label for="">Author</label>
+          <input type="text" id="author" name="author" />
 
-        <label for="">Release year</label>
-        <input type="text" id="release-year" name="release-year" />
+          <label for="">Book title</label>
+          <input type="text" id="book-title" name="book-title" />
 
+<<<<<<< HEAD
         <label for="">Number of pages</label>
         <input type="text" id="number-of-pages" name="number-of-pages" />
 
         <label for="">Read</label>
         <input type="checkbox" id="read" name="read" />
+=======
+          <label for="">Release year</label>
+          <input type="text" id="release-year" name="release-year" />
+>>>>>>> 3f8b5d7 (Book addition and deletion now works)
 
-        <button id="my-form-submit">Submit</button>
-      </form>
+          <label for="">Number of pages</label>
+          <input type="text" id="number-of-pages" name="number-of-pages" />
+
+          <label for="">Read</label>
+          <input type="checkbox" id="read" name="read" />
+
+          <button id="close-button" type="button">Close</button>
+          <button id="my-form-submit" type="submit">Submit</button>
+        </form>
+      </div>
     </div>
+
+    <!-- Books -->
     <div id="book-container"></div>
     <script src="index.js"></script>
   </body>
