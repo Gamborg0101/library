@@ -6,8 +6,6 @@ function Book(title, author, pages, read) {
   this.pages = pages;
   this.read = read;
   this.id = crypto.randomUUID();
-
-  addBookToLibrary(this);
 }
 
 function addBookToLibrary(book) {
@@ -83,7 +81,7 @@ function createNewBook(book) {
     : (readButton.textContent = "Read");
 
   readButton.addEventListener("click", () => {
-    book.read = !book.read;
+    book.read = !book.read; /* State */
 
     if (book.read === true) {
       readButton.textContent = "Not read";
@@ -121,17 +119,17 @@ const formSubmit = document.getElementById("my-form-submit");
 
 formSubmit.addEventListener("click", (e) => {
   e.preventDefault();
+  let read = document.getElementById("read");
 
   let author = document.getElementById("author");
   let bookTitle = document.getElementById("book-title");
   let numberOfPages = document.getElementById("number-of-pages");
-  let read = document.getElementById("read");
 
   let newBook = new Book(
     bookTitle.value,
     author.value,
     numberOfPages.value,
-    read.value
+    read.checked
   );
 
   createNewBook(newBook);
