@@ -78,20 +78,28 @@ function createNewBook(book) {
   /* Add "read"-button */
   const readButton = document.createElement("button");
 
-  readButton.textContent = !book.read
-    ? (readButton.textContent = "Read")
-    : (readButton.textContent = "Not read");
+  readButton.textContent = book.read
+    ? (readButton.textContent = "Not read")
+    : (readButton.textContent = "Read");
 
   readButton.addEventListener("click", () => {
-    readButton.textContent === "Not read"
-      ? ((readButton.textContent = "Read"),
-        (readStatusElement.textContent = "Read"))
-      : ((readButton.textContent = "Not read"),
-        (readStatusElement.textContent = "Not read"));
+    book.read = !book.read;
+
+    if (book.read === true) {
+      readButton.textContent = "Not read";
+      readStatusElement.textContent = `Have you read it? ${
+        book.read ? "Read" : "Not read"
+      }`;
+    } else {
+      readButton.textContent = "Read";
+      readStatusElement.textContent = `Have you read it? ${
+        book.read ? "Read" : "Not read"
+      }`;
+    }
   });
+  readButton.addEventListener("click", () => {});
 
   addNewBook.appendChild(readButton);
-  console.log(readButton);
 }
 
 /* Open modal */
